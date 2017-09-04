@@ -1,13 +1,27 @@
-import React, {Component} from  'react';
+import React from  'react';
 import ReactDOM from 'react-dom';
+import './css/style.css';
+
+import { BrowserRouter, Route, Switch} from 'react-router-dom'
 
 import StorePicker from './components/StorePicker'
 import App from './components/App'
-import './css/style.css';
-
-import registerServiceWorker from './registerServiceWorker';
 
 
 
-ReactDOM.render(<App />, document.getElementById('root'));
-registerServiceWorker();
+
+
+const Root = () => {
+  return(
+    <BrowserRouter>
+      <Switch>
+        <Route exact path="/" component={StorePicker}/>
+        <Route  path="/store/:storeId" component={App}/>
+      </Switch>
+    </BrowserRouter>
+  )
+}
+
+
+
+ReactDOM.render(<Root/>, document.getElementById('root'));
